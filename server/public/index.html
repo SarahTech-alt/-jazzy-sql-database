@@ -10,43 +10,51 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <h1>Get Jazzy Database</h1>
-
-    <h2>Famous Jazz Artists</h2>
-    <input type="text" id="artist-name" placeholder="Artist name">
-    <input type="text" id="artist-born" placeholder="Artist birth date">
-    <button id="submit-artist">Submit Artist</button>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Born</th>
-            </tr>
-        </thead>
-        <tbody id="artistTableBody">
-            <!-- Append artists here -->
-        </tbody>
-    </table>
-    <br />
-    <hr />
-    <h2>Famous Jazz Songs</h2>
-    <!-- Form for songs goes here -->
-    <input type="text" id="song-name" placeholder="Song title">
-    <input type="text" id="song-length" placeholder="Length of song">
-    <input type="text" id="date-released" placeholder="Date released">
-    <button id="submit-song">Submit Song</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Length of Song</th>
-                <th>Date Released</th>
-            </tr>
-        </thead>
-        <tbody id="songTableBody">
-            <!-- Append songs here -->
-        </tbody>
-    </table>
+    <header>
+        <h1>Get Jazzy Database</h1>
+    </header>
+    <main> 
+    <section>
+        <h2>Famous Jazz Artists</h2>
+        <form>
+            <input type="text" id="artist-name" placeholder="Artist name">
+            <input type="text" id="artist-born" placeholder="Artist birth date">
+            <button id="submit-artist">Submit Artist</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Born</th>
+                </tr>
+            </thead>
+            <tbody id="artistTableBody">
+                <!-- Append artists here -->
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2>Famous Jazz Songs</h2>
+        <!-- Form for songs goes here -->
+        <form>
+            <input type="text" id="song-name" placeholder="Song title">
+            <input type="text" id="song-length" placeholder="Length of song">
+            <input type="text" id="song-released" placeholder="Date released">
+            <button id="submit-song">Submit Song</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Length of Song</th>
+                    <th>Date Released</th>
+                </tr>
+            </thead>
+            <tbody id="songTableBody">
+                <!-- Append songs here -->
+            </tbody>
+        </table>
+    </section>
+    </main>
 </body>
 </html>
