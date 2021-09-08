@@ -2,13 +2,30 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log(`In /songs GET`);
-    res.send(songList);
+    const queryText = 'SELECT * FROM "song" ORDER BY "title" DESC LIMIT 100;'
+    pool.query(queryText).then((result) => {
+        res.send(result.rows)
+    }).catch((error) => {
+        console.log('There was an error making a query', error);
+        res.sendStatus(500);
+    });
 });
 
 router.post('/', (req, res) => {
-    songList.push(req.body);
-    res.sendStatus(201);
+    const newSong = req.body;
+    const queryText = `
+        INSERT INTO "song" ("title", "length", "released")
+        VALUES ($1, $2, $3);
+    `;
+    pool.query(queryText, [
+        newSong.title, // $1
+        newSong.length, // $2
+        newSong.released // $3
+    ]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
 });
 
 const pg = require('pg');
@@ -30,3 +47,5 @@ pool.on('connect', () => {
 pool.on('error', (error) => {
     console.log('unable to connect to postgresql', error);
 });
+
+module.exports = router;
