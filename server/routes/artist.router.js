@@ -12,8 +12,19 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    artistList.push(req.body);
-    res.sendStatus(201);
+    const newArtist = req.body;
+    const queryText = `
+        INSERT INTO "artist" ("artist_name", "year_born")
+        VALUES ($1, $2);
+    `;
+    pool.query(queryText, [
+        newArtist.artist_name, // $1
+        newArist.year_born // $2
+    ]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
 });
 
 const pg = require('pg');
@@ -27,7 +38,6 @@ const pool = new pg.Pool({
                             // trying to connect to pg and throw an error
 });
 
-
 pool.on('connect', () => {
     console.log('pg connected to post postgresql!');
 });
@@ -35,3 +45,5 @@ pool.on('connect', () => {
 pool.on('error', (error) => {
     console.log('unable to connect to postgresql', error);
 });
+
+module.exports = router;
