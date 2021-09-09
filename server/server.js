@@ -10,7 +10,7 @@ app.use(express.static('server/public'));
 let artistRouter = require('./routes/artist.router');
 let songRouter = require('./routes/song.router');
 
-app.use('/songs', songRouter);
+app.use('/song', songRouter);
 app.use('/artist', artistRouter);
 
 // TODO - Replace static content with a database tables

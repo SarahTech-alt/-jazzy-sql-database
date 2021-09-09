@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM "artist" ORDER BY "year_born" DESC LIMIT 100;'
+    const queryText = 'SELECT * FROM "artist" ORDER BY "birthdate" DESC LIMIT 100;'
     pool.query(queryText).then((result) => {
         res.send(result.rows)
     }).catch((error) => {
@@ -11,15 +11,16 @@ router.get('/', (req, res) => {
     });
 });
 
+
 router.post('/', (req, res) => {
     const newArtist = req.body;
     const queryText = `
-        INSERT INTO "artist" ("artist_name", "year_born")
+        INSERT INTO "artist" ("name", "birthdate")
         VALUES ($1, $2);
     `;
     pool.query(queryText, [
-        newArtist.artist_name, // $1
-        newArist.year_born // $2
+        newArtist.name, // $1
+        newArtist.birthdate // $2
     ]).then((result) => {
         res.sendStatus(201);
     }).catch((error) => {
